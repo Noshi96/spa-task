@@ -1,4 +1,4 @@
-import { createGlobalStyle } from 'styled-components'
+import { createGlobalStyle } from 'styled-components';
 
 export const GlobalStyle = createGlobalStyle`
 
@@ -22,6 +22,11 @@ export const GlobalStyle = createGlobalStyle`
     line-height: 1.5em;
   }
 
+  p {
+    margin-block-start: 0;
+    margin-block-end: 0;
+  }
+
   input, select, button {
     font-family: inherit;
     font-size: inherit;
@@ -36,4 +41,4 @@ export const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
     text-decoration: none;
   }
-`
+`;
