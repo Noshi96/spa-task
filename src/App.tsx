@@ -1,8 +1,6 @@
-import { GlobalStyle } from 'styles/global-style'
-import logo from 'logo.svg'
-
+import { GlobalStyle } from 'styles/global-style';
 interface Props {
-  children: React.ReactNode | React.ReactNode[]
+  children: React.ReactNode | React.ReactNode[];
 }
 
 function App({ children }: Props) {
@@ -10,24 +8,11 @@ function App({ children }: Props) {
     <>
       <GlobalStyle />
       <div className='App'>
-        <header className='App-header'>
-          <img src={logo} className='App-logo' alt='logo' />
-          <p>
-            Edit <code>src/App.tsx</code> and save to reload.
-          </p>
-          <a
-            className='App-link'
-            href='https://reactjs.org'
-            target='_blank'
-            rel='noopener noreferrer'
-          >
-            Learn React
-          </a>
-          {children}
-        </header>
+        <header className='App-header'></header>
+        {children}
       </div>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
