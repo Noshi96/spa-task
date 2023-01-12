@@ -1,0 +1,2 @@
+import ErrorFetchStatusToast from 'components/ErrorFetchStatusToast/ErrorFetchStatusToast';
+export default ErrorFetchStatusToast;
