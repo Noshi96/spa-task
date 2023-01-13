@@ -1,3 +1,3 @@
 export interface RowColorModel {
-  background: string
+  background: string;
 }

@@ -3,6 +3,9 @@ import { useGetProductsQuery } from 'services/products-api';
 import CircularProgress from '@mui/material/CircularProgress';
 import { FetchBaseQueryError } from '@reduxjs/toolkit/dist/query/fetchBaseQuery';
 import ErrorFetchStatusToast from 'components/ErrorFetchStatusToast';
+import ProductTable from 'components/ProductTable';
+import { tableConfig } from 'config/table-config';
+import { PageContainer } from 'pages/ProductsPageView/style';
 
 const ProductsPageView = () => {
   const { data, error, isLoading, isError } = useGetProductsQuery('');
@@ -15,20 +18,15 @@ const ProductsPageView = () => {
   }
 
   if (isError) {
-    console.log(error);
     return <ErrorFetchStatusToast message={message} statusCode={statusCode} />;
   }
 
   const products = data?.data;
 
   return (
-    <div>
-      {products?.length !== 0
-        ? products?.map(product => {
-            return <p>{product.name}</p>;
-          })
-        : null}
-    </div>
+    <PageContainer>
+      <ProductTable products={products} tableConfig={tableConfig} />
+    </PageContainer>
   );
 };
 
