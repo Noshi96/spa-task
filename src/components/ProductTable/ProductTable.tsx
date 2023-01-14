@@ -13,13 +13,21 @@ const ProductTable = ({ products, tableConfig }: Props) => {
   return (
     <ProductTableContainer>
       <thead>
-        {columns.map(column => {
-          return <th>{column.columnName}</th>;
-        })}
+        <tr>
+          {columns.map(column => {
+            return <th key={column.columnName}>{column.columnName}</th>;
+          })}
+        </tr>
       </thead>
       <tbody>
         {products?.map(product => {
-          return <ProductRow tableConfig={tableConfig} product={product} />;
+          return (
+            <ProductRow
+              tableConfig={tableConfig}
+              product={product}
+              key={product.id}
+            />
+          );
         })}
       </tbody>
     </ProductTableContainer>
