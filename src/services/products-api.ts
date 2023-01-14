@@ -10,7 +10,7 @@ export const api = createApi({
       query: ({ perPage, page, id }) => {
         console.log({ perPage, page, id });
         const url = id
-          ? `products/${id}`
+          ? `products?id=${id}`
           : perPage && page
           ? `products?per_page=${perPage}&page=${page}`
           : 'products/404';

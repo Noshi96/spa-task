@@ -13,6 +13,8 @@ import Pagination from 'components/Pagination';
 import useGetSearchParamsForConfig from 'hooks/useGetSearchParamsForConfig';
 
 const ProductsPageView = () => {
+  const [currentPage, setCurentPage] = useState<number>(1);
+
   const queryConfig = useGetSearchParamsForConfig();
 
   const [startQueryConfig, setStartQueryConfig] =
@@ -44,20 +46,10 @@ const ProductsPageView = () => {
     );
   }
 
-  const changeFilter = () => {
-    const filteredQueryConfig = {
-      perPage: 0,
-      page: 0,
-      id: 10,
-    };
-    setStartQueryConfig(filteredQueryConfig);
-  };
-
   return (
     <PageContainer>
       <ProductTable products={products} tableConfig={tableConfig} />
-      <button onClick={changeFilter}>eloo</button>
-      <Pagination></Pagination>
+      <Pagination paginationClickHandler={setStartQueryConfig}></Pagination>
     </PageContainer>
   );
 };
