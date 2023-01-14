@@ -1,0 +1,25 @@
+import { FetchQueryConfigModel } from 'models/FetchQueryConfigModel';
+import { useLocation, useSearchParams } from 'react-router-dom';
+
+const useGetSearchParamsForConfig = (): FetchQueryConfigModel => {
+  const [searchParams] = useSearchParams();
+  const perPage = searchParams.get('per_page');
+  const page = searchParams.get('page');
+  const id = searchParams.get('id');
+  const location = useLocation();
+  let validPage = 1,
+    validPerPage = 5;
+
+  if (location.pathname !== '/') {
+    validPage = 0;
+    validPerPage = 0;
+  }
+  console.log(id);
+  return {
+    perPage: perPage ? Number(perPage) : validPerPage,
+    page: page ? Number(page) : validPage,
+    id: Number(id),
+  } as FetchQueryConfigModel;
+};
+
+export default useGetSearchParamsForConfig;

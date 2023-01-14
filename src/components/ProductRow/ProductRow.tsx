@@ -14,7 +14,7 @@ const ProductRow = ({ product, tableConfig }: Props) => {
     <ProductRowElement background={color}>
       {columns.map(column => {
         return (
-          <ProductTdField>
+          <ProductTdField key={`${column.columnName}-td`}>
             {product[column.columnName as keyof ProductModel]}
           </ProductTdField>
         );
