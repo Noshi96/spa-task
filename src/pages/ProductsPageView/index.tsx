@@ -6,9 +6,22 @@ import ErrorFetchStatusToast from 'components/ErrorFetchStatusToast';
 import ProductTable from 'components/ProductTable';
 import { tableConfig } from 'config/table-config';
 import { PageContainer } from 'pages/ProductsPageView/style';
+import { ProductModel } from 'models/ProductModel';
+import { useState } from 'react';
+import { FetchQueryConfigModel } from 'models/FetchQueryConfigModel';
+import Pagination from 'components/Pagination';
+import useGetSearchParamsForConfig from 'hooks/useGetSearchParamsForConfig';
 
 const ProductsPageView = () => {
-  const { data, error, isLoading, isError } = useGetProductsQuery('');
+  const queryConfig = useGetSearchParamsForConfig();
+
+  const [startQueryConfig, setStartQueryConfig] =
+    useState<FetchQueryConfigModel>(queryConfig);
+
+  const { data, error, isLoading, isError } =
+    useGetProductsQuery(startQueryConfig);
+
+  console.log({ data, error, isLoading, isError });
   const { message, statusCode } = useHandleFetchErrors(
     error as FetchBaseQueryError,
   );
@@ -21,11 +34,30 @@ const ProductsPageView = () => {
     return <ErrorFetchStatusToast message={message} statusCode={statusCode} />;
   }
 
-  const products = data?.data;
+  const products = data?.data.length
+    ? data?.data
+    : [data?.data as unknown as ProductModel];
+
+  if (!products[0]?.id) {
+    return (
+      <ErrorFetchStatusToast message={'No data to display'} statusCode={''} />
+    );
+  }
+
+  const changeFilter = () => {
+    const filteredQueryConfig = {
+      perPage: 0,
+      page: 0,
+      id: 10,
+    };
+    setStartQueryConfig(filteredQueryConfig);
+  };
 
   return (
     <PageContainer>
       <ProductTable products={products} tableConfig={tableConfig} />
+      <button onClick={changeFilter}>eloo</button>
+      <Pagination></Pagination>
     </PageContainer>
   );
 };
