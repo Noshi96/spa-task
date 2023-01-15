@@ -11,10 +11,9 @@ import { useState } from 'react';
 import { FetchQueryConfigModel } from 'models/FetchQueryConfigModel';
 import Pagination from 'components/Pagination';
 import useGetSearchParamsForConfig from 'hooks/useGetSearchParamsForConfig';
+import SearchBar from 'components/SearchBar';
 
 const ProductsPageView = () => {
-  const [currentPage, setCurentPage] = useState<number>(1);
-
   const queryConfig = useGetSearchParamsForConfig();
 
   const [startQueryConfig, setStartQueryConfig] =
@@ -48,6 +47,7 @@ const ProductsPageView = () => {
 
   return (
     <PageContainer>
+      <SearchBar handleSearchQuery={setStartQueryConfig} />
       <ProductTable products={products} tableConfig={tableConfig} />
       <Pagination paginationClickHandler={setStartQueryConfig}></Pagination>
     </PageContainer>

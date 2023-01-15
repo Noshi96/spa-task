@@ -21,8 +21,8 @@ const Pagination = ({ paginationClickHandler }: Props) => {
     }
 
     paginationClickHandler(prev => ({
-      perPage: prev.perPage,
-      page: prev.page ? prev.page - 1 : 1,
+      perPage: prev.perPage ? prev.perPage : 5,
+      page: prev.page && prev.page > 1 ? prev.page - 1 : 1,
     }));
 
     setSearchParams({ page: `${Number(page) - 1}`, per_page: perPage });
@@ -34,7 +34,7 @@ const Pagination = ({ paginationClickHandler }: Props) => {
     }
 
     paginationClickHandler(prev => ({
-      perPage: prev.perPage,
+      perPage: prev.perPage ? prev.perPage : 5,
       page: prev.page ? prev.page + 1 : 1,
     }));
 
