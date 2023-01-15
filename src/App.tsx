@@ -7,10 +7,7 @@ function App({ children }: Props) {
   return (
     <>
       <GlobalStyle />
-      <div className='App'>
-        <header className='App-header'></header>
-        {children}
-      </div>
+      <div className='App'>{children}</div>
     </>
   );
 }

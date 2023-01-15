@@ -26,13 +26,21 @@ const mockTableConfig: TableConfigModel = {
   itemsPerPage: 5,
 };
 
-test('renders single row of table', () => {
-  render(
-    <ProductRow product={mockProductData} tableConfig={mockTableConfig} />,
-  );
-  expect(screen.getByText(/sand dollar/i)).toBeInTheDocument();
-  expect(screen.getByRole('tr')).toBeInTheDocument();
-  expect(screen.getAllByRole('td')[0]).toBe(7);
-  expect(screen.getAllByRole('td')[1]).toBe('sand dollar');
-  expect(screen.getAllByRole('td')[2]).toBe(2006);
+describe('ProductRow component', () => {
+  it('renders the correct data for each column', () => {
+    render(
+      <table>
+        <tbody>
+          <ProductRow product={mockProductData} tableConfig={mockTableConfig} />
+        </tbody>
+      </table>,
+    );
+
+    const cells = screen.getAllByRole('cell');
+    expect(cells[0]).toHaveTextContent(mockProductData.id.toString());
+    expect(cells[1]).toHaveTextContent(mockProductData.name);
+    expect(cells[2]).toHaveTextContent(mockProductData.year.toString());
+
+    expect(screen.getByText(mockProductData.name)).toBeInTheDocument();
+  });
 });
