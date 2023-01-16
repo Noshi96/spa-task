@@ -8,13 +8,11 @@ export const api = createApi({
   endpoints: build => ({
     getProducts: build.query<FetchedProductsDataModel, FetchQueryConfigModel>({
       query: ({ perPage, page, id }) => {
-        console.log({ perPage, page, id });
         const url = id
           ? `products?id=${id}`
           : perPage && page
           ? `products?per_page=${perPage}&page=${page}`
           : 'products/404';
-        console.log({ perPage, page, id, url });
         return {
           url: url,
           validateStatus: (response, result) =>

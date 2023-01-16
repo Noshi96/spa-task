@@ -22,7 +22,6 @@ const ProductsPageView = () => {
   const { data, error, isLoading, isError } =
     useGetProductsQuery(startQueryConfig);
 
-  console.log({ data, error, isLoading, isError });
   const { message, statusCode } = useHandleFetchErrors(
     error as FetchBaseQueryError,
   );

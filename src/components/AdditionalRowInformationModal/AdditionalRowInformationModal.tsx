@@ -18,7 +18,6 @@ const AdditionalRowInformationModal = ({
   handleOpenModal,
   handleCloseModal,
 }: Props) => {
-  console.log(product);
   const { color } = product;
   return handleOpenModal
     ? createPortal(
