@@ -1,6 +1,6 @@
 # Live
 
-https://noshi96.github.io/spa-task/
+https://noshi96.github.io/spa-task
 
 # Getting Started with Create React App
 
