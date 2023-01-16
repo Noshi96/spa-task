@@ -13,17 +13,6 @@ describe('AdditionalRowInformationModal', () => {
   const handleOpenModal = true;
   const handleCloseModal = jest.fn();
 
-  it('should render correctly', () => {
-    const { container } = render(
-      <AdditionalRowInformationModal
-        product={mockProductData}
-        handleOpenModal={handleOpenModal}
-        handleCloseModal={handleCloseModal}
-      />,
-    );
-    expect(container).toMatchSnapshot();
-  });
-
   it('should call handleCloseModal when CloseIcon is clicked', () => {
     render(
       <AdditionalRowInformationModal

@@ -15,16 +15,18 @@ const mockData500: FetchBaseQueryError = {
   status: 'PARSING_ERROR',
 };
 
-test('returns object with message and status code 404', () => {
-  const { result } = renderHook(() => useHandleFetchErrors(mockData404));
-  expect(result.current.statusCode).toBe(404);
-  expect(result.current.message).toBe('Data is not available');
-});
+describe('useHandleFetchErrors', () => {
+  it('returns object with message and status code 404', () => {
+    const { result } = renderHook(() => useHandleFetchErrors(mockData404));
+    expect(result.current.statusCode).toBe(404);
+    expect(result.current.message).toBe('Data is not available');
+  });
 
-test('returns object with message and status code 500', () => {
-  const { result } = renderHook(() => useHandleFetchErrors(mockData500));
-  expect(result.current.statusCode).toBe(500);
-  expect(result.current.message).toBe(
-    'SyntaxError: Unexpected non-whitespace character after JSON at position 4',
-  );
+  it('returns object with message and status code 500', () => {
+    const { result } = renderHook(() => useHandleFetchErrors(mockData500));
+    expect(result.current.statusCode).toBe(500);
+    expect(result.current.message).toBe(
+      'SyntaxError: Unexpected non-whitespace character after JSON at position 4',
+    );
+  });
 });
