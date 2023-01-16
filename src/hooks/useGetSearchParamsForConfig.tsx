@@ -14,7 +14,6 @@ const useGetSearchParamsForConfig = (): FetchQueryConfigModel => {
     validPage = 0;
     validPerPage = 0;
   }
-  console.log(id);
   return {
     perPage: perPage ? Number(perPage) : validPerPage,
     page: page ? Number(page) : validPage,

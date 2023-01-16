@@ -7,15 +7,17 @@ const mockData: ErrorFetchStatusModel = {
   message: 'Data is not available',
 };
 
-test('renders error message toast with status code and message', () => {
-  render(
-    <ErrorFetchStatusToast
-      statusCode={mockData.statusCode}
-      message={mockData.message}
-    />,
-  );
-  const paragraphElement = screen.getByText(
-    /Status code: 404 - Data is not available/i,
-  );
-  expect(paragraphElement).toBeInTheDocument();
+describe('ErrorFetchStatusToast component', () => {
+  it('renders error message toast with status code and message', () => {
+    render(
+      <ErrorFetchStatusToast
+        statusCode={mockData.statusCode}
+        message={mockData.message}
+      />,
+    );
+    const paragraphElement = screen.getByText(
+      /Status code: 404 - Data is not available/i,
+    );
+    expect(paragraphElement).toBeInTheDocument();
+  });
 });
