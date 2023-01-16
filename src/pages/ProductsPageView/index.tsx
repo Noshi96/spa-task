@@ -7,20 +7,25 @@ import ProductTable from 'components/ProductTable';
 import { tableConfig } from 'config/table-config';
 import { PageContainer } from 'pages/ProductsPageView/style';
 import { ProductModel } from 'models/ProductModel';
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import { FetchQueryConfigModel } from 'models/FetchQueryConfigModel';
 import Pagination from 'components/Pagination';
 import useGetSearchParamsForConfig from 'hooks/useGetSearchParamsForConfig';
 import SearchBar from 'components/SearchBar';
 
 const ProductsPageView = () => {
-  const queryConfig = useGetSearchParamsForConfig();
+  const startQueryConfig = useGetSearchParamsForConfig();
 
-  const [startQueryConfig, setStartQueryConfig] =
-    useState<FetchQueryConfigModel>(queryConfig);
+  const [queryConfig, setQueryConfig] =
+    useState<FetchQueryConfigModel>(startQueryConfig);
 
-  const { data, error, isLoading, isError } =
-    useGetProductsQuery(startQueryConfig);
+  const { data, error, isLoading, isError } = useGetProductsQuery(queryConfig);
+
+  const products = useMemo(
+    () =>
+      data?.data.length ? data?.data : [data?.data as unknown as ProductModel],
+    [data],
+  ) as ProductModel[];
 
   const { message, statusCode } = useHandleFetchErrors(
     error as FetchBaseQueryError,
@@ -34,10 +39,6 @@ const ProductsPageView = () => {
     return <ErrorFetchStatusToast message={message} statusCode={statusCode} />;
   }
 
-  const products = data?.data.length
-    ? data?.data
-    : [data?.data as unknown as ProductModel];
-
   if (!products[0]?.id) {
     return (
       <ErrorFetchStatusToast message={'No data to display'} statusCode={''} />
@@ -46,9 +47,9 @@ const ProductsPageView = () => {
 
   return (
     <PageContainer>
-      <SearchBar handleSearchQuery={setStartQueryConfig} />
+      <SearchBar handleSearchQuery={setQueryConfig} />
       <ProductTable products={products} tableConfig={tableConfig} />
-      <Pagination paginationClickHandler={setStartQueryConfig}></Pagination>
+      <Pagination paginationClickHandler={setQueryConfig}></Pagination>
     </PageContainer>
   );
 };
