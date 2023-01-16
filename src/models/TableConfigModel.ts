@@ -4,5 +4,4 @@ interface ColumnModel {
 
 export interface TableConfigModel {
   columns: ColumnModel[];
-  itemsPerPage: number;
 }
