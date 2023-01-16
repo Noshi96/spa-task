@@ -15,7 +15,7 @@ const ErrorFetchStatus = ({ statusCode, message }: ErrorFetchStatusModel) => {
         size='large'
         aria-label='back to home'
         onClick={() => {
-          navigate('/spa-task/');
+          navigate('/spa-task');
           navigate(0);
         }}
       >

@@ -1,5 +1,5 @@
 import AdditionalRowInformationModal from 'components/AdditionalRowInformationModal';
-import { ProductRowElement, ProductTdField } from 'components/ProductRow/style';
+import { ProductRowElement } from 'components/ProductRow/style';
 import useModal from 'hooks/useModal';
 import { ProductModel } from 'models/ProductModel';
 import { TableConfigModel } from 'models/TableConfigModel';
@@ -18,9 +18,9 @@ const ProductRow = ({ product, tableConfig }: Props) => {
       <ProductRowElement onClick={toggle} background={color}>
         {columns.map(column => {
           return (
-            <ProductTdField key={`${column.columnName}-td`}>
+            <td key={`${column.columnName}-td`}>
               {product[column.columnName as keyof ProductModel]}
-            </ProductTdField>
+            </td>
           );
         })}
       </ProductRowElement>
