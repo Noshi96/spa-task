@@ -10,7 +10,7 @@ const useGetSearchParamsForConfig = (): FetchQueryConfigModel => {
   let validPage = 1,
     validPerPage = 5;
 
-  if (location.pathname !== '/') {
+  if (location.pathname !== '/spa-task') {
     validPage = 0;
     validPerPage = 0;
   }
