@@ -1,7 +1,7 @@
 {
   "name": "spa-products-task",
   "version": "0.1.0",
-  "homepage": "https://gitname.github.io/spa-task/",
+  "homepage": "https://gitname.github.io/spa-task",
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.10.5",
