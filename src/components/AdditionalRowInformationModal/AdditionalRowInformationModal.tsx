@@ -18,7 +18,6 @@ const AdditionalRowInformationModal = ({
   handleOpenModal,
   handleCloseModal,
 }: Props) => {
-  console.log(product);
   const { color } = product;
   return handleOpenModal
     ? createPortal(
@@ -34,7 +33,7 @@ const AdditionalRowInformationModal = ({
           </CloseButtonContainer>
           {Object.entries(product).map(([key, value]) => {
             return (
-              <ProductParagraph>{`${key.replace(
+              <ProductParagraph key={key}>{`${key.replace(
                 '_',
                 ' ',
               )}: ${value}`}</ProductParagraph>

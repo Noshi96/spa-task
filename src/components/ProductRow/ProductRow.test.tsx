@@ -23,7 +23,6 @@ const mockTableConfig: TableConfigModel = {
       columnName: 'year',
     },
   ],
-  itemsPerPage: 5,
 };
 
 describe('ProductRow component', () => {

@@ -12,5 +12,4 @@ export const tableConfig: TableConfigModel = {
       columnName: 'year',
     },
   ],
-  itemsPerPage: 5,
 };

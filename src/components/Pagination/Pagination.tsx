@@ -3,7 +3,7 @@ import { ButtonContainer } from 'components/Pagination/style';
 import ArrowCircleRightIcon from '@mui/icons-material/ArrowCircleRight';
 import ArrowCircleLeftIcon from '@mui/icons-material/ArrowCircleLeft';
 import IconButton from '@mui/material/IconButton';
-import { Dispatch, SetStateAction } from 'react';
+import { Dispatch, SetStateAction, useCallback } from 'react';
 import { FetchQueryConfigModel } from 'models/FetchQueryConfigModel';
 
 type Props = {
@@ -15,7 +15,7 @@ const Pagination = ({ paginationClickHandler }: Props) => {
   const page = searchParams.get('page') || '1';
   const perPage = searchParams.get('per_page') || '5';
 
-  const decrementPage = () => {
+  const decrementPage = useCallback(() => {
     if (Number(page) < 2) {
       return;
     }
@@ -26,9 +26,9 @@ const Pagination = ({ paginationClickHandler }: Props) => {
     }));
 
     setSearchParams({ page: `${Number(page) - 1}`, per_page: perPage });
-  };
+  }, [page, perPage, paginationClickHandler, setSearchParams]);
 
-  const incrementPage = () => {
+  const incrementPage = useCallback(() => {
     if (Number(page) >= Math.ceil(12 / Number(perPage))) {
       return;
     }
@@ -39,7 +39,7 @@ const Pagination = ({ paginationClickHandler }: Props) => {
     }));
 
     setSearchParams({ page: `${Number(page) + 1}`, per_page: perPage });
-  };
+  }, [page, perPage, paginationClickHandler, setSearchParams]);
 
   return (
     <ButtonContainer>
