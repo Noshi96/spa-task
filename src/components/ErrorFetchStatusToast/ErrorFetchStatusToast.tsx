@@ -3,11 +3,11 @@ import {
   BackIconButton,
   Paragraph,
 } from 'components/ErrorFetchStatusToast/style';
-import { ErrorFetchStatusModel } from 'models/ErrorFetchStatusModel';
+import { ErrorMessageModel } from 'models';
 import ArrowCircleLeftIcon from '@mui/icons-material/ArrowCircleLeft';
 import { useNavigate } from 'react-router-dom';
 
-const ErrorFetchStatus = ({ statusCode, message }: ErrorFetchStatusModel) => {
+const ErrorFetchStatus = ({ statusCode, message }: ErrorMessageModel) => {
   const navigate = useNavigate();
   return (
     <Container>

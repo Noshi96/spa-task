@@ -4,13 +4,13 @@ import ArrowCircleRightIcon from '@mui/icons-material/ArrowCircleRight';
 import ArrowCircleLeftIcon from '@mui/icons-material/ArrowCircleLeft';
 import IconButton from '@mui/material/IconButton';
 import { Dispatch, SetStateAction, useCallback } from 'react';
-import { FetchQueryConfigModel } from 'models/FetchQueryConfigModel';
+import { FetchQueryConfigModel } from 'models';
 
-type Props = {
+type IPaginationProps = {
   paginationClickHandler: Dispatch<SetStateAction<FetchQueryConfigModel>>;
 };
 
-const Pagination = ({ paginationClickHandler }: Props) => {
+const Pagination = ({ paginationClickHandler }: IPaginationProps) => {
   const [searchParams, setSearchParams] = useSearchParams();
   const page = searchParams.get('page') || '1';
   const perPage = searchParams.get('per_page') || '5';

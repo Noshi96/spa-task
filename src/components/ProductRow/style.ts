@@ -1,4 +1,4 @@
-import { RowColorModel } from 'models/RowColorModel';
+import { RowColorModel } from 'models';
 import styled from 'styled-components';
 
 export const ProductRowElement = styled.tr<RowColorModel>`

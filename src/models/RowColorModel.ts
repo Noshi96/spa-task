@@ -1,3 +1,3 @@
-export interface RowColorModel {
+export default interface RowColorModel {
   background: string;
 }

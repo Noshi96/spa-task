@@ -2,6 +2,6 @@ interface ColumnModel {
   columnName: string;
 }
 
-export interface TableConfigModel {
+export default interface TableConfigModel {
   columns: ColumnModel[];
 }

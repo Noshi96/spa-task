@@ -1,4 +1,4 @@
-import { ProductModel } from 'models/ProductModel';
+import { ProductModel } from 'models';
 import {
   CloseButtonContainer,
   ModalContainer,
@@ -8,7 +8,7 @@ import CloseIcon from '@mui/icons-material/Close';
 import IconButton from '@mui/material/IconButton';
 import { createPortal } from 'react-dom';
 
-interface Props {
+interface IAdditionalRowInformationModalProps {
   product: ProductModel;
   handleOpenModal: boolean;
   handleCloseModal: () => void;
@@ -17,7 +17,7 @@ const AdditionalRowInformationModal = ({
   product,
   handleOpenModal,
   handleCloseModal,
-}: Props) => {
+}: IAdditionalRowInformationModalProps) => {
   const { color } = product;
   return handleOpenModal
     ? createPortal(

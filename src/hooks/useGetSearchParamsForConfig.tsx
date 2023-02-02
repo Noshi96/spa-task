@@ -1,4 +1,4 @@
-import { FetchQueryConfigModel } from 'models/FetchQueryConfigModel';
+import { FetchQueryConfigModel } from 'models';
 import { useLocation, useSearchParams } from 'react-router-dom';
 
 const useGetSearchParamsForConfig = (): FetchQueryConfigModel => {
