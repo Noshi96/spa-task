@@ -1,5 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { FetchedProductsDataModel, FetchQueryConfigModel } from 'models';
+import { queryURL } from 'utils/generate-query-url';
 
 export const api = createApi({
   baseQuery: fetchBaseQuery({
@@ -8,11 +9,7 @@ export const api = createApi({
   endpoints: build => ({
     getProducts: build.query<FetchedProductsDataModel, FetchQueryConfigModel>({
       query: ({ perPage, page, id }) => {
-        const url = id
-          ? `products?id=${id}`
-          : perPage && page
-          ? `products?per_page=${perPage}&page=${page}`
-          : 'products/404';
+        const url = queryURL({ perPage, page, id });
         return {
           url: url,
           validateStatus: (response, result) =>
