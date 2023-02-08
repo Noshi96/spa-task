@@ -1,14 +1,13 @@
 import ProductRow from 'components/ProductRow';
 import { ProductTableContainer } from 'components/ProductTable/style';
-import { ProductModel } from 'models/ProductModel';
-import { TableConfigModel } from 'models/TableConfigModel';
+import { ProductModel, TableConfigModel } from 'models';
 
-interface Props {
+interface IProductTableProps {
   products: ProductModel[] | undefined;
   tableConfig: TableConfigModel;
 }
 
-const ProductTable = ({ products, tableConfig }: Props) => {
+const ProductTable = ({ products, tableConfig }: IProductTableProps) => {
   const { columns } = tableConfig;
   return (
     <ProductTableContainer>

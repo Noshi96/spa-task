@@ -1,9 +1,9 @@
 import { render, screen } from '@testing-library/react';
-import { ErrorFetchStatusModel } from 'models/ErrorFetchStatusModel';
+import { ErrorMessageModel } from 'models';
 import ErrorFetchStatusToast from 'components/ErrorFetchStatusToast';
 import { BrowserRouter } from 'react-router-dom';
 
-const mockData: ErrorFetchStatusModel = {
+const mockData: ErrorMessageModel = {
   statusCode: 404,
   message: 'Data is not available',
 };

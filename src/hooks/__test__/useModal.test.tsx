@@ -1,5 +1,5 @@
 import { act, renderHook } from '@testing-library/react';
-import useModal from 'hooks/useModal';
+import { useModal } from 'hooks';
 
 describe('useModal', () => {
   it('should have an initial state of false', () => {

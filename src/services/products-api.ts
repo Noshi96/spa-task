@@ -1,18 +1,15 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { FetchedProductsDataModel } from 'models/FetchedProductsDataModel';
-import { FetchQueryConfigModel } from 'models/FetchQueryConfigModel';
-import { apiUrl } from 'utils/apiUrl';
+import { FetchedProductsDataModel, FetchQueryConfigModel } from 'models';
+import { queryURL } from 'utils/generate-query-url';
 
 export const api = createApi({
-  baseQuery: fetchBaseQuery({ baseUrl: apiUrl.toString() }),
+  baseQuery: fetchBaseQuery({
+    baseUrl: process.env.REACT_APP_PUBLIC_PRODUCTS_API_URL?.toString(),
+  }),
   endpoints: build => ({
     getProducts: build.query<FetchedProductsDataModel, FetchQueryConfigModel>({
       query: ({ perPage, page, id }) => {
-        const url = id
-          ? `products?id=${id}`
-          : perPage && page
-          ? `products?per_page=${perPage}&page=${page}`
-          : 'products/404';
+        const url = queryURL({ perPage, page, id });
         return {
           url: url,
           validateStatus: (response, result) =>

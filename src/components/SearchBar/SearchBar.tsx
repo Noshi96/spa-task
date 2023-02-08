@@ -1,17 +1,16 @@
 import SearchIcon from '@mui/icons-material/Search';
 import TextField from '@mui/material/TextField';
 import { Dispatch, SetStateAction } from 'react';
-import { FetchQueryConfigModel } from 'models/FetchQueryConfigModel';
+import { FetchQueryConfigModel } from 'models';
 import { SearchContainer } from 'components/SearchBar/style';
 import { useSearchParams } from 'react-router-dom';
 
-type Props = {
+type ISearchBarProps = {
   handleSearchQuery: Dispatch<SetStateAction<FetchQueryConfigModel>>;
 };
 
-const SearchBar = ({ handleSearchQuery }: Props) => {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [_, setSearchParams] = useSearchParams();
+const SearchBar = ({ handleSearchQuery }: ISearchBarProps) => {
+  const [, setSearchParams] = useSearchParams();
 
   return (
     <SearchContainer>
