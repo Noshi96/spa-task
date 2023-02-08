@@ -5,6 +5,10 @@ import ArrowCircleLeftIcon from '@mui/icons-material/ArrowCircleLeft';
 import IconButton from '@mui/material/IconButton';
 import { Dispatch, SetStateAction, useCallback } from 'react';
 import { FetchQueryConfigModel } from 'models';
+import {
+  MAX_PRODUCTS_PER_PAGE,
+  MIN_AVAILABLE_PAGE_NUMBER,
+} from 'constants/page-params-boundaries';
 
 type IPaginationProps = {
   paginationClickHandler: Dispatch<SetStateAction<FetchQueryConfigModel>>;
@@ -12,8 +16,8 @@ type IPaginationProps = {
 
 const Pagination = ({ paginationClickHandler }: IPaginationProps) => {
   const [searchParams, setSearchParams] = useSearchParams();
-  const page = searchParams.get('page') || '1';
-  const perPage = searchParams.get('per_page') || '5';
+  const page = searchParams.get('page') || `${MIN_AVAILABLE_PAGE_NUMBER}`;
+  const perPage = searchParams.get('per_page') || `${MAX_PRODUCTS_PER_PAGE}`;
 
   const decrementPage = useCallback(() => {
     if (Number(page) < 2) {
@@ -21,8 +25,11 @@ const Pagination = ({ paginationClickHandler }: IPaginationProps) => {
     }
 
     paginationClickHandler(prev => ({
-      perPage: prev.perPage ? prev.perPage : 5,
-      page: prev.page && prev.page > 1 ? prev.page - 1 : 1,
+      perPage: prev.perPage ? prev.perPage : MAX_PRODUCTS_PER_PAGE,
+      page:
+        prev.page && prev.page > MIN_AVAILABLE_PAGE_NUMBER
+          ? prev.page - 1
+          : MIN_AVAILABLE_PAGE_NUMBER,
     }));
 
     setSearchParams({ page: `${Number(page) - 1}`, per_page: perPage });
@@ -34,8 +41,8 @@ const Pagination = ({ paginationClickHandler }: IPaginationProps) => {
     }
 
     paginationClickHandler(prev => ({
-      perPage: prev.perPage ? prev.perPage : 5,
-      page: prev.page ? prev.page + 1 : 1,
+      perPage: prev.perPage ? prev.perPage : MAX_PRODUCTS_PER_PAGE,
+      page: prev.page ? prev.page + 1 : MIN_AVAILABLE_PAGE_NUMBER,
     }));
 
     setSearchParams({ page: `${Number(page) + 1}`, per_page: perPage });

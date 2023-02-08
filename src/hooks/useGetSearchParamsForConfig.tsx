@@ -1,3 +1,7 @@
+import {
+  MAX_PRODUCTS_PER_PAGE,
+  MIN_AVAILABLE_PAGE_NUMBER,
+} from 'constants/page-params-boundaries';
 import { FetchQueryConfigModel } from 'models';
 import { useLocation, useSearchParams } from 'react-router-dom';
 
@@ -7,8 +11,8 @@ const useGetSearchParamsForConfig = (): FetchQueryConfigModel => {
   const page = searchParams.get('page');
   const id = searchParams.get('id');
   const location = useLocation();
-  let validPage = 1,
-    validPerPage = 5;
+  let validPage = MIN_AVAILABLE_PAGE_NUMBER,
+    validPerPage = MAX_PRODUCTS_PER_PAGE;
 
   if (location.pathname !== '/spa-task/' && location.pathname !== '/spa-task') {
     validPage = 0;
