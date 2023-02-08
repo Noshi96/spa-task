@@ -1,7 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import ProductRow from 'components/ProductRow';
-import { ProductModel } from 'models/ProductModel';
-import { TableConfigModel } from 'models/TableConfigModel';
+import { ProductModel, TableConfigModel } from 'models';
 
 const mockProductData: ProductModel = {
   id: 7,

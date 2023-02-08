@@ -1,9 +1,9 @@
 import { FetchBaseQueryError } from '@reduxjs/toolkit/dist/query/fetchBaseQuery';
-import { ErrorFetchStatusModel } from 'models/ErrorFetchStatusModel';
+import { ErrorMessageModel } from 'models';
 
-const useHandleFetchErrors = (
+const useGenerateErrorMessage = (
   error: FetchBaseQueryError,
-): ErrorFetchStatusModel => {
+): ErrorMessageModel => {
   if (!error) {
     return { message: '', statusCode: '' };
   }
@@ -14,7 +14,7 @@ const useHandleFetchErrors = (
     return {
       message: errorMessage,
       statusCode: error?.originalStatus,
-    } as ErrorFetchStatusModel;
+    } as ErrorMessageModel;
   }
 
   if (!('status' in error)) {
@@ -26,7 +26,7 @@ const useHandleFetchErrors = (
     return {
       message: errorMessage,
       statusCode: error?.status,
-    } as ErrorFetchStatusModel;
+    } as ErrorMessageModel;
   }
 
   if (error.status === 500) {
@@ -34,7 +34,7 @@ const useHandleFetchErrors = (
     return {
       message: errorMessage,
       statusCode: error?.status,
-    } as ErrorFetchStatusModel;
+    } as ErrorMessageModel;
   }
 
   const errorMessage =
@@ -42,7 +42,7 @@ const useHandleFetchErrors = (
   return {
     message: errorMessage,
     statusCode: error?.status,
-  } as ErrorFetchStatusModel;
+  } as ErrorMessageModel;
 };
 
-export default useHandleFetchErrors;
+export default useGenerateErrorMessage;

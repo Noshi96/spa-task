@@ -1,5 +1,5 @@
 import { renderHook } from '@testing-library/react';
-import useHandleFetchErrors from 'hooks/useHandleFetchErrors';
+import { useGenerateErrorMessage } from 'hooks';
 import { FetchBaseQueryError } from '@reduxjs/toolkit/dist/query/fetchBaseQuery';
 
 const mockData404: FetchBaseQueryError = {
@@ -17,13 +17,13 @@ const mockData500: FetchBaseQueryError = {
 
 describe('useHandleFetchErrors', () => {
   it('returns object with message and status code 404', () => {
-    const { result } = renderHook(() => useHandleFetchErrors(mockData404));
+    const { result } = renderHook(() => useGenerateErrorMessage(mockData404));
     expect(result.current.statusCode).toBe(404);
     expect(result.current.message).toBe('Data is not available');
   });
 
   it('returns object with message and status code 500', () => {
-    const { result } = renderHook(() => useHandleFetchErrors(mockData500));
+    const { result } = renderHook(() => useGenerateErrorMessage(mockData500));
     expect(result.current.statusCode).toBe(500);
     expect(result.current.message).toBe(
       'SyntaxError: Unexpected non-whitespace character after JSON at position 4',

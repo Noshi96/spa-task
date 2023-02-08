@@ -1,4 +1,4 @@
-import { TableConfigModel } from 'models/TableConfigModel';
+import { TableConfigModel } from 'models';
 
 export const tableConfig: TableConfigModel = {
   columns: [

@@ -1,15 +1,14 @@
 import AdditionalRowInformationModal from 'components/AdditionalRowInformationModal';
 import { ProductRowElement } from 'components/ProductRow/style';
-import useModal from 'hooks/useModal';
-import { ProductModel } from 'models/ProductModel';
-import { TableConfigModel } from 'models/TableConfigModel';
+import { useModal } from 'hooks';
+import { ProductModel, TableConfigModel } from 'models';
 
-interface Props {
+interface IProductRowProps {
   tableConfig: TableConfigModel;
   product: ProductModel;
 }
 
-const ProductRow = ({ product, tableConfig }: Props) => {
+const ProductRow = ({ product, tableConfig }: IProductRowProps) => {
   const { color } = product;
   const { columns } = tableConfig;
   const { isOpen, toggle } = useModal();

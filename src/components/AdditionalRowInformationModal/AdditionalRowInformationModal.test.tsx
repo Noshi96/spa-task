@@ -1,5 +1,5 @@
 import { render, fireEvent, screen } from '@testing-library/react';
-import { ProductModel } from 'models/ProductModel';
+import { ProductModel } from 'models';
 import AdditionalRowInformationModal from './AdditionalRowInformationModal';
 
 describe('AdditionalRowInformationModal', () => {

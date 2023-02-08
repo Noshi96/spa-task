@@ -1,9 +1,9 @@
 import { GlobalStyle } from 'styles/global-style';
-interface Props {
+interface IAppProps {
   children: React.ReactNode | React.ReactNode[];
 }
 
-function App({ children }: Props) {
+function App({ children }: IAppProps) {
   return (
     <>
       <GlobalStyle />

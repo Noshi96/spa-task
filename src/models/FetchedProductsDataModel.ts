@@ -1,6 +1,6 @@
-import { ProductModel } from 'models/ProductModel';
+import { ProductModel } from 'models';
 
-export interface FetchedProductsDataModel {
+export default interface FetchedProductsDataModel {
   data: ProductModel[];
   page?: number;
   per_page?: number;
